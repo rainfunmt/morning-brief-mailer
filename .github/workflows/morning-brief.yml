@@ -1,0 +1,36 @@
+name: 台北九點晨報自動寄送
+
+on:
+  schedule:
+    # UTC 01:00 = 台北時間 09:00；週一~週六執行（cron 星期用 1-6，0=週日不跑）
+    - cron: "0 1 * * 1-6"
+  workflow_dispatch: {}  # 允許在 GitHub Actions 頁面手動觸發測試
+
+jobs:
+  send-brief:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run morning brief
+        env:
+          # 全部從 GitHub repo 的 Settings → Secrets and variables → Actions 讀取
+          # 絕不會出現在程式碼或這份 workflow 檔案裡（見 rules/SECURITY_RULES.md 第 5 條）
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          GMAIL_SENDER_EMAIL: ${{ secrets.GMAIL_SENDER_EMAIL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TIMEZONE: Asia/Taipei
+        run: python main.py

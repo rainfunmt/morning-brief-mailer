@@ -1,0 +1,30 @@
+# 機密資訊 — 絕對不能進版本控制
+.env
+.env.*
+!.env.example
+*.json
+!package.json
+credentials/
+token.json
+service-account*.json
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# 系統/編輯器
+.DS_Store
+.vscode/
+.idea/
+
+# 執行期產出（可重新產生，不需版控）
+output/
+*.log

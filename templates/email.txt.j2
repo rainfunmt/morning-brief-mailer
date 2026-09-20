@@ -1,0 +1,19 @@
+{{ recipient_name }} 您好，
+
+{{ theme.branding.title }} {{ date_display }}
+{% if market_closed_note %}※ {{ market_closed_note }}{% endif %}
+
+── 今日一句 ──
+{{ thesis }}
+
+── 國際要聞 ──
+{% for item in news_items %}
+{{ loop.index }}. {{ item.title }}
+{{ item.summary }}
+
+{% endfor %}
+── 市場數據 ──
+{{ market_data_asof }}
+{% for row in market_rows %}{{ row.label }}：{{ row.value }}
+{% endfor %}
+{{ theme.branding.footer_disclaimer }}

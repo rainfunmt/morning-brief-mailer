@@ -1,0 +1,31 @@
+# 外觀設定 — 複製為 theme.yaml 並依喜好調整，不需要改任何程式碼
+# email_renderer.py 會讀這個檔案套用樣式
+#
+# 目前配色：專業藍白，適合財經/商務類晨報，乾淨易讀
+
+colors:
+  ink: "#0f2540"           # 主要文字顏色（深藍黑，取代純黑更柔和）
+  ink_soft: "#3d5a80"      # 次要文字顏色（內文，藍灰色）
+  muted: "#7a8ba0"         # 輔助文字（備註、頁尾）
+  accent: "#1a56b0"        # 強調色（專業藍，標題底線/強調用）
+  line: "#c8d6e8"          # 分隔線（淺藍灰）
+  line_soft: "#e4ecf7"     # 淺色分隔線（表格用）
+  bg: "#ffffff"             # 背景色（純白）
+  up: "#c0392b"             # 上漲/正向數字顏色（維持紅色慣例）
+  down: "#1a7a4c"           # 下跌/負向數字顏色（維持綠色慣例）
+
+fonts:
+  heading: "-apple-system, 'Segoe UI', 'Noto Sans TC', sans-serif"
+  body: "-apple-system, 'Segoe UI', 'Noto Sans TC', sans-serif"
+  mono: "'IBM Plex Mono', ui-monospace, Consolas, monospace"
+
+layout:
+  max_width_px: 640
+  heading_size_px: 24
+  heading_weight: 700
+  body_size_px: 14.5
+
+branding:
+  title: "台北九點晨報"
+  subtitle: "Taipei 09:00 Brief"
+  footer_disclaimer: "本內容僅供參考，不構成投資建議。"
