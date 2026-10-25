@@ -6,6 +6,10 @@ on:
     - cron: "0 1 * * 1-6"
   workflow_dispatch: {}  # 允許在 GitHub Actions 頁面手動觸發測試
 
+# 只需要讀取程式碼，不給寫入權限（Secrets 不受這個設定影響）
+permissions:
+  contents: read
+
 jobs:
   send-brief:
     runs-on: ubuntu-latest
