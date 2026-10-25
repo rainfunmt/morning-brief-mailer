@@ -2,6 +2,8 @@
 
 每天台北時間 09:00（週一~週六）自動整理國際新聞、市場數據，寄送個人化晨報 email 給名單上的每一位收件人。
 
+> 📌 **這個 repo 目前作為作品展示**：GitHub Actions 的排程已關閉，不會自動寄送任何信件。想自己部署，請看下方「[排程部署](#排程部署github-actions免費)」。
+
 ## 這是什麼
 
 一開始這是用 Claude 的自然語言排程做出來的原型（連結 Gmail / Google Sheets connector）。
@@ -92,8 +94,8 @@ branding:
    - `GMAIL_REFRESH_TOKEN`
    - `GMAIL_SENDER_EMAIL`
    - `ANTHROPIC_API_KEY`（選用）
-3. `.github/workflows/morning-brief.yml` 已經設定好週一~週六台北 09:00 自動執行
-4. 想先測試：repo → **Actions** 頁籤 → 選這個 workflow → **Run workflow** 手動觸發一次
+3. 想先測試：repo → **Actions** 頁籤 → 選這個 workflow → **Run workflow** 手動觸發一次
+4. 測試成功後，打開 `.github/workflows/morning-brief.yml`，把 `schedule:` 那三行的註解拿掉，就會在週一~週六台北 09:00 自動執行（本 repo 預設關閉）
 
 ## 資安（必要條件）
 
